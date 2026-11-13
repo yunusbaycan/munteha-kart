@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Münteha · Dijital Kartvizit</title>
-<meta name="description" content="Münteha web tasarım stüdyosu: Ahmet Faruk ve Yunus Emre. Kartı parmağınızla çevirin, bize ulaşın.">
+<meta name="description" content="Münteha web tasarım stüdyosu: Ahmet Faruk Doğan ve Yunus Emre Baycan. Kartı parmağınızla çevirin, bize ulaşın.">
 <meta name="theme-color" content="#e6f3f1">
 <link rel="canonical" href="https://yunusbaycan.github.io/munteha-kart/">
 <meta property="og:type" content="website">
@@ -65,7 +65,9 @@ header .tag::before { content: ""; width: .55em; height: .55em; border-radius: 5
 /* ---------- Sahne ---------- */
 .stage-wrap { display: grid; place-items: center; min-height: 0; }
 .stage {
-  width: min(100%, 640px, (100dvh - 230px) * 1.545);
+  --w: min(100%, 600px, 100dvh - 270px);
+  width: var(--w);
+  margin-top: calc(var(--w) * 0.3);
   aspect-ratio: 1004 / 650;
   container-type: inline-size;
   position: relative;
@@ -76,6 +78,15 @@ header .tag::before { content: ""; width: .55em; height: .55em; border-radius: 5
 }
 .stage.grabbing { cursor: grabbing; }
 .stage:focus-visible { outline: 3px solid var(--coral); outline-offset: 14px; border-radius: 12px; }
+/* Kartın arkasına sıkıştırılmış ekip fotoğrafları */
+.photo { position: absolute; width: 33%; aspect-ratio: 4 / 5; top: -56%; margin: 0; pointer-events: none;
+  background: var(--white); padding: 1.1%; border-radius: 16px; box-shadow: 0 18px 36px -18px rgba(22,63,61,.5); }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 11px; }
+.photo figcaption { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  font: 600 clamp(11px, 2.3cqw, 14px)/1 var(--f-body); color: var(--ink); background: var(--coral-soft); padding: 6px 11px; border-radius: 99px; box-shadow: 0 4px 10px -6px rgba(22,63,61,.4); }
+.photo.left  { left: -15%;  transform: rotate(-8deg); }
+.photo.right { right: -15%; transform: rotate(7deg); }
+@media (max-width: 700px) { .photo.left { left: -3%; } .photo.right { right: -3%; } }
 .scene { position: absolute; inset: 0; perspective: 1800px; --u: calc(100cqw / 1004); }
 .shadow { position: absolute; left: 6%; right: 6%; bottom: -9%; height: 18%; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(22,63,61,.38), rgba(22,63,61,0));
@@ -117,7 +128,7 @@ header .tag::before { content: ""; width: .55em; height: .55em; border-radius: 5
 .back .pane::before { content: ""; position: absolute; right: calc(var(--u) * -150); bottom: calc(var(--u) * -150); width: calc(var(--u) * 300); height: calc(var(--u) * 300); border-radius: 50%; border: calc(var(--u) * 3) solid rgba(255,154,134,.6); }
 .back .pane::after { content: ""; position: absolute; right: calc(var(--u) * 93); bottom: calc(var(--u) * 93); width: calc(var(--u) * 26); height: calc(var(--u) * 26); border-radius: 50%; background: var(--coral); }
 .back .people { position: absolute; left: calc(var(--u) * 88); top: calc(var(--u) * 60); display: grid; gap: calc(var(--u) * 26); }
-.back .people b { display: block; font-family: var(--f-display); font-weight: 400; font-size: calc(var(--u) * 48); line-height: 1.1; }
+.back .people b { display: block; font-family: var(--f-display); font-weight: 400; font-size: calc(var(--u) * 44); white-space: nowrap; line-height: 1.1; }
 .back .people .role { display: inline-block; font-size: calc(var(--u) * 20); font-weight: 600; letter-spacing: .02em; background: var(--coral-soft); padding: calc(var(--u) * 3) calc(var(--u) * 12) calc(var(--u) * 4); border-radius: 99px; margin: calc(var(--u) * 6) 0 calc(var(--u) * 4); }
 .back .people a { display: flex; align-items: center; gap: calc(var(--u) * 12); font-size: calc(var(--u) * 22); color: var(--ink); text-decoration: none; margin-top: calc(var(--u) * 8); }
 .back .people a svg { width: calc(var(--u) * 30); height: calc(var(--u) * 30); flex: none; }
@@ -168,7 +179,9 @@ a.home:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 
   <div class="stage-wrap">
     <div class="stage" id="stage" lang="tr" tabindex="0" role="img" aria-roledescription="çevrilebilir kartvizit"
-         aria-label="Münteha kartviziti. Ön yüz: münteha., web sitesi stüdyosu, Bursa. Arka yüz: Ahmet Faruk, tasarım ve iletişim, 0530 508 58 14, faruk.33ahmet@gmail.com. Yunus Emre, yazılım ve yayın, 0552 670 71 61, yunusbaycan23@gmail.com.">
+         aria-label="Münteha kartviziti. Ön yüz: münteha., web sitesi stüdyosu, Bursa. Arka yüz: Ahmet Faruk Doğan, tasarım ve iletişim, 0530 508 58 14, faruk.33ahmet@gmail.com. Yunus Emre Baycan, yazılım ve yayın, 0552 670 71 61, yunusbaycan23@gmail.com.">
+      <figure class="photo left"><img src="ekip/ahmet-faruk.jpg" width="480" height="600" alt="Ahmet Faruk Doğan"><figcaption>Ahmet Faruk Doğan</figcaption></figure>
+      <figure class="photo right"><img src="ekip/yunus-emre.jpg" width="480" height="600" alt="Yunus Emre Baycan"><figcaption>Yunus Emre Baycan</figcaption></figure>
       <div class="shadow" id="shadow"></div>
       <div class="scene">
         <div class="card" id="card">
@@ -189,12 +202,12 @@ a.home:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
             <i class="pane"></i>
             <div class="people">
               <div>
-                <b>Ahmet Faruk</b><span class="role">Tasarım ve iletişim</span>
+                <b>Ahmet Faruk Doğan</b><span class="role">Tasarım ve iletişim</span>
                 <a class="tel" href="tel:+905305085814" data-ic="tel">0530 508 58 14</a>
                 <a href="mailto:faruk.33ahmet@gmail.com" data-ic="mail">faruk.33ahmet@gmail.com</a>
               </div>
               <div>
-                <b>Yunus Emre</b><span class="role">Yazılım ve yayın</span>
+                <b>Yunus Emre Baycan</b><span class="role">Yazılım ve yayın</span>
                 <a class="tel" href="tel:+905526707161" data-ic="tel">0552 670 71 61</a>
                 <a href="mailto:yunusbaycan23@gmail.com" data-ic="mail">yunusbaycan23@gmail.com</a>
               </div>
